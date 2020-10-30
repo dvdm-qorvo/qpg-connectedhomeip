@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 158160 $
- * $DateTime: 2020/10/09 12:51:04 $
+ * $Change: 158253 $
+ * $DateTime: 2020/10/12 12:04:55 $
  */
 
 /** @file "qvCHIP.h"
@@ -66,6 +66,13 @@ extern "C" {
 #endif
 
 #include <stddef.h>
+
+#define LED_RED     0
+#define LED_GREEN   1
+#define LED_WHITE   2
+
+#define BTN_LOCK        0
+#define BTN_FUNCTION    1
 
 /*! Maximum number of connections */
 #ifndef QVCHIP_DM_CONN_MAX
@@ -217,6 +224,9 @@ typedef struct
 /*! \brief      BD address data type */
 typedef uint8_t bdAddr_t[BDA_ADDR_LEN];
 
+/*! \brief      Callback type for button press callback */
+typedef void (*pBtnCback)(uint8_t btnIdx, bool btnPressed);
+
 //Requests
 /** @brief Initialize Qorvo needed components for CHIP.
 *   @return result                   0 if init was succesfull. -1 when failed
@@ -229,6 +239,10 @@ int qvCHIP_init(void);
 *   @param formattedMsg              Char buffer with formatted string message.
 */
 void qvCHIP_Printf(uint8_t module, const char* formattedMsg);
+
+void qvCHIP_LedSet(uint8_t ledNr, bool state);
+void qvCHIP_LedBlink(uint8_t ledNr, uint16_t onMs, uint16_t offMs);
+void qvCHIP_SetBtnCallback(pBtnCback btnCback);
 
 /** @brief Initialization of NVM memory used for CHIP
 */
@@ -470,7 +484,7 @@ qvStatus_t qvCHIP_BleStartAdvertising(void);
 */
 qvStatus_t qvCHIP_BleStopAdvertising(void);
 
-/** @brief Stops BLE advertising
+/** @brief Returns handle for RX or TX characteristic
  *
  *  @param rxHandle        Boolean indicating if the function should return RX or TX handle.
  *  @return                Returns RX handle if rxHandle is True and TX handle if rxHandle is False.
