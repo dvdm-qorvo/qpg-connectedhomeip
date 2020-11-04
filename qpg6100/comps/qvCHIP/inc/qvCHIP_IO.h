@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 159842 $
- * $DateTime: 2020/10/30 14:04:59 $
+ * $Change: 160145 $
+ * $DateTime: 2020/11/04 09:21:00 $
  */
 
 /** @file "qvCHIP.h"
@@ -68,7 +68,7 @@
  *****************************************************************************/
 
 /** @brief Callback type for button press callback */
-typedef void (*pBtnCback)(uint8_t btnIdx, bool btnPressed);
+typedef void (*qvCHIP_pBtnCback)(uint8_t btnIdx, bool btnPressed);
 
 /*****************************************************************************
  *                    Public Function Prototypes
@@ -87,7 +87,7 @@ extern "C" {
 *   @param ledNr                     The index of the LED that is controlled.
 *   @param state                     LED on (true) or off (false).
 */
-void qvCHIP_LedSet(uint8_t ledNr, bool state);
+bool qvCHIP_LedSet(uint8_t ledNr, bool state);
 
 /** @brief Blink a LED with specified on and off period.
 *
@@ -95,13 +95,13 @@ void qvCHIP_LedSet(uint8_t ledNr, bool state);
 *   @param onMs                      How many msec should the ON state last.
 *   @param offMs                     How many msec should the OFF state last.
 */
-void qvCHIP_LedBlink(uint8_t ledNr, uint16_t onMs, uint16_t offMs);
+bool qvCHIP_LedBlink(uint8_t ledNr, uint16_t onMs, uint16_t offMs);
 
 /** @brief Store internally an upper layer callback for signaling button presses.
 *
 *   @param btnCback                  Pointer to the button handler to be stored internally.
 */
-void qvCHIP_SetBtnCallback(pBtnCback btnCback);
+void qvCHIP_SetBtnCallback(qvCHIP_pBtnCback btnCback);
 
 /** @brief Initialize UART for use.
  *
