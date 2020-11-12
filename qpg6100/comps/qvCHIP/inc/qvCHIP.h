@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 159735 $
- * $DateTime: 2020/10/29 21:54:42 $
+ * $Change: 160615 $
+ * $DateTime: 2020/11/12 13:36:20 $
  */
 
 /** @file "qvCHIP.h"
@@ -88,10 +88,10 @@ void qvCHIP_Printf(uint8_t module, const char* formattedMsg);
 
 /** @brief Return a sequence of random bytes.
 *
-*   @param aOutput                   Buffer for the returned random sequence.
-*   @param aOutputLength             Length of the sequence to be obtained.
+*   @param outputLength              Length of the sequence to be obtained.
+*   @param pOutput                   Buffer for the returned random sequence.
 */
-void qvCHIP_RandomGet(uint8_t *aOutput, uint8_t aOutputLength);
+void qvCHIP_RandomGet(uint8_t outputLength, uint8_t *pOutput);
     
 #ifdef __cplusplus
 }
