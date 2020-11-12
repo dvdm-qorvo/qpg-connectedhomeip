@@ -52,7 +52,7 @@ int mbedtls_hardware_poll( void *data,
     qvCHIP_RandomGet(output, len);
     *olen = len;
 
-    return 0;
+    return ret;
 }
 
 #endif /* MBEDTLS_ENTROPY_HARDWARE_ALT && MBEDTLS_ENTROPY_C */
