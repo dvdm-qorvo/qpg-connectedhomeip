@@ -49,7 +49,7 @@ int mbedtls_hardware_poll( void *data,
     int ret = 0;
     (void) data;
 
-    qvCHIP_RandomGet(output, len);
+    qvCHIP_RandomGet(len, output);
     *olen = len;
 
     return ret;
