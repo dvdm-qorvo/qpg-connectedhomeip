@@ -197,6 +197,11 @@ typedef enum qvStatus_ {
     QV_STATUS_BUFFER_TOO_SMALL = 1
 } qvStatus_t;
 
+typedef enum qvAdvLocation_ {
+    QV_ADV_DATA_LOC_ADV = 0,
+    QV_ADV_DATA_LOC_SCAN = 1
+} qvAdvLocation_t;
+
 typedef struct
 {
     uint8_t bytes[16];
@@ -401,6 +406,9 @@ uint16_t qvCHIP_BleGetMTU(uint16_t conId);
  *  @param data            Pointer to the data to send.
 */
 void qvCHIP_TxData(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+
+void qvCHIP_BleSetAdvInterval(uint16_t intervalMin, uint16_t intervalMax);
+void qvCHIP_BleSetAdvData(qvAdvLocation_t location, uint8_t len, uint8_t *pData);
 
 /** @brief Start BLE advertising using the default parameters
  *
