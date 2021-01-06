@@ -23,7 +23,7 @@ SECTIONS
     /* Linkerscript only for contiguous SYS and UCRAM */
     ASSERT(eSYSRAM == sUCRAM, "Non contiguous SYS and UCRAM")
 
-    /* 
+    /*
      * User license is first - only for FLASH programs.
      *
      * BLE/MAC address entries (+0x10) in the user license skipped to
@@ -32,9 +32,10 @@ SECTIONS
     .native_user_license   0x4000000 + 0x10 : { KEEP(*(.native_user_license)); } > FLASH
     .isr_vector : ALIGN(0x100) { KEEP(*(.isr_vector)); } > FLASH
 
-    .text :   
-    { 
-        *(.text*)
+    .text :
+    {
+        . = ALIGN(4);
+        *(.text) *(.text.*)
 
         KEEP(*(.init))
         KEEP(*(.fini))
@@ -53,8 +54,7 @@ SECTIONS
         *(SORT(.dtors.*))
         *(.dtors)
 
-        *(.rodata*)
-
+        *(.rodata) *(.rodata.*)
         KEEP(*(.eh_frame*))
     } > FLASH
 
@@ -69,7 +69,6 @@ SECTIONS
         *(.ARM.exidx* .gnu.linkonce.armexidx.*)
     } > FLASH
     __exidx_end = .;
-
     .rom :    { . = ALIGN(4); *(.rom)   *(.rom.*);    } > ROM
 
     /* Start of memory to be retained in sleep */
@@ -79,9 +78,9 @@ SECTIONS
     .mw_crc 0x20008000 : { . += 0x4; } > RAM
     .crc    0x20008004 : { . += 0x4; } > RAM
     .ret_hw 0x20008008 : { . += 0x1B4; } > RAM
-    .ret_sw 0x200081BC : { . += 0x7B; }  > RAM
+    .ret_sw 0x200081BC : { . += 0x7C; }  > RAM
     ASSERT(. >= 0x200081c0, "gpmicro areas must fall into retention areas")
-    /*      0x20008370-0x2000837F : unused space */
+    .unused_area 0x20008238 : { . += 0x148; } > RAM
     /* PUF RAM Area */
     .pkey   0x20008380 : { . += 0x80;  }  > RAM
     .pufr   0x20008400 : { . += 0x400; }  > RAM
@@ -102,8 +101,8 @@ SECTIONS
     { 
         __data_start__ = .;
         *(vtable)
-        *(.data*)
         . = ALIGN (4);
+        *(.data) *(.data.*)
         PROVIDE (__ram_func_section_start = .);
         *(.ram)
         PROVIDE (__ram_func_section_end = .);
@@ -141,7 +140,7 @@ SECTIONS
 
     /* Scroll up to higher ram area for scratchpad variables */
     .higher_ram_noretain (NOLOAD) : {
-        . = (_eretain > sUCRAM) ? ALIGN(4) : (sUCRAM - _eretain); 
+        . = (_eretain > sUCRAM) ? ALIGN(4) : (sUCRAM - _eretain);
         _shigher_ram_noretain = . ;
         *(.higher_ram_noretain) *(.higher_ram_noretain.*);
         _ehigher_ram_noretain = . ;
@@ -182,7 +181,7 @@ SECTIONS
 
     /* using remaining RAM for stack */
     _sstack = _eram;
-    _estack = ORIGIN(RAM) + LENGTH(RAM) - SIZEOF(.higher_ram_noretain);
+    _estack = ORIGIN(RAM) + LENGTH(RAM);
 
     /* check minimum stack size is still available */
     min_stack_size = 0x200;

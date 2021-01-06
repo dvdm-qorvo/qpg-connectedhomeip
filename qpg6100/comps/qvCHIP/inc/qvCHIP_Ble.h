@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 159735 $
- * $DateTime: 2020/10/29 21:54:42 $
+ * $Change: 162964 $
+ * $DateTime: 2020/12/21 09:35:11 $
  */
 
 /** @file "qvCHIP.h"
@@ -398,16 +398,37 @@ qvStatus_t qvCHIP_BleCloseConnection(uint16_t conId);
 */
 uint16_t qvCHIP_BleGetMTU(uint16_t conId);
 
-/** @brief Transmits BLE data with the specified parameters
+/** @brief Writes to an attribute with the specified parameters
  *
  *  @param conId           ID of the connection to use to send data.
  *  @param handle          Handle in the GATT server for the characteristic on which to send the data.
  *  @param length          Length of the data.
  *  @param data            Pointer to the data to send.
 */
-void qvCHIP_TxData(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+void qvCHIP_BleWriteAttr(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
 
+/** @brief Sends an indication with the specified parameters
+ *
+ *  @param conId           ID of the connection to use to send data.
+ *  @param handle          Handle in the GATT server for the characteristic on which to send the data.
+ *  @param length          Length of the data.
+ *  @param data            Pointer to the data to send.
+*/
+void qvCHIP_BleSendIndication(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+
+/** @brief Sets minimum and maximum intervals for advertising packets
+ *
+ *  @param intervalMin     Minimum interval between advertisement packets.
+ *  @param intervalMax     Maximum interval between advertisement packets.
+*/
 void qvCHIP_BleSetAdvInterval(uint16_t intervalMin, uint16_t intervalMax);
+
+/** @brief Set advertising data to be used
+ *
+ *  @param location        Type of advertising data that is being set (advertising or scan response).
+ *  @param len             Length of the data.
+ *  @param pData           Pointer to the advertising data.
+*/
 void qvCHIP_BleSetAdvData(qvAdvLocation_t location, uint8_t len, uint8_t *pData);
 
 /** @brief Start BLE advertising using the default parameters
