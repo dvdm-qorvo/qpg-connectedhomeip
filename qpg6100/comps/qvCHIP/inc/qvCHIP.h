@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 160615 $
- * $DateTime: 2020/11/12 13:36:20 $
+ * $Change: 164096 $
+ * $DateTime: 2021/01/14 12:41:26 $
  */
 
 /** @file "qvCHIP.h"
@@ -75,7 +75,7 @@ extern "C" {
  *****************************************************************************/
 
 /** @brief Initialize Qorvo needed components for CHIP.
-*   @return result                   0 if init was succesfull. -1 when failed
+*   @return result                   0 if init was successful. -1 when failed
 */
 int qvCHIP_init(void);
 
@@ -92,7 +92,7 @@ void qvCHIP_Printf(uint8_t module, const char* formattedMsg);
 *   @param pOutput                   Buffer for the returned random sequence.
 */
 void qvCHIP_RandomGet(uint8_t outputLength, uint8_t *pOutput);
-    
+
 #ifdef __cplusplus
 }
 #endif //__cplusplus
