@@ -77,7 +77,7 @@ SECTIONS
     /* Fixed sections */
     .mw_crc 0x20008000 : { . += 0x4; } > RAM
     .crc    0x20008004 : { . += 0x4; } > RAM
-    .ret_hw 0x20008008 : { . += 0x1B4; } > RAM
+    .ret_hw 0x20008008 : { . += 0x1B4; } > RAM /* 0x20008008+0x1b4 = 0x200081BC = GP_MM_RAM_RETENTION_END */
     .ret_sw 0x200081BC : { . += 0x7C; }  > RAM
     ASSERT(. >= 0x200081c0, "gpmicro areas must fall into retention areas")
     .unused_area 0x20008238 : { . += 0x148; } > RAM
