@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 160145 $
- * $DateTime: 2020/11/04 09:21:00 $
+ * $Change: 164742 $
+ * $DateTime: 2021/01/25 11:31:30 $
  */
 
 /** @file "qvCHIP.h"
@@ -54,6 +54,11 @@
 #define LED_RED   0
 #define LED_GREEN 1
 #define LED_WHITE 2
+
+/*! PWM color LED channels */
+#define PWM_CHANNEL_RED   (0) 
+#define PWM_CHANNEL_GREEN (1)
+#define PWM_CHANNEL_BLUE  (2)
 
 /*! Button indexes */
 #define BTN_LOCK     0
@@ -126,6 +131,21 @@ void qvCHIP_UartTxData(uint8_t length, const char* txBuffer);
  *                         If more data was pending, only 'length' bytes are returned.
 */
 uint8_t qvCHIP_UartReadRxData(uint8_t length, char* rxBuffer);
+
+
+/** @brief turns color LED on or off
+*
+*   @param onoff              true for on, false for off
+*/
+void qvCHIP_PWMColorOnOff(bool onoff);
+
+/** @brief sets RGB color of led 255 == 100%
+*
+*   @param r                    intensity of red (0-255)
+*   @param g                    intensity of green (0-255)
+*   @param b                    intensity of blue (0-255)
+*/
+void qvCHIP_PWMSetColor(uint8_t r, uint8_t g, uint8_t b);
 
 #ifdef __cplusplus
 }

@@ -71,14 +71,13 @@ SECTIONS
     __exidx_end = .;
     .rom :    { . = ALIGN(4); *(.rom)   *(.rom.*);    } > ROM
 
-
     /* Start of memory to be retained in sleep */
     _sretain = 0x20008000;
 
     /* Fixed sections */
     .mw_crc 0x20008000 : { . += 0x4; } > RAM
     .crc    0x20008004 : { . += 0x4; } > RAM
-    .ret_hw 0x20008008 : { . += 0x1B4; } > RAM
+    .ret_hw 0x20008008 : { . += 0x1B4; } > RAM /* 0x20008008+0x1b4 = 0x200081BC = GP_MM_RAM_RETENTION_END */
     .ret_sw 0x200081BC : { . += 0x7C; }  > RAM
     ASSERT(. >= 0x200081c0, "gpmicro areas must fall into retention areas")
     .unused_area 0x20008238 : { . += 0x148; } > RAM
@@ -134,7 +133,12 @@ SECTIONS
         __data_end__ = .;
     } > RAM AT > FLASH
     .bss :  { . = ALIGN(4); *(.bss)  *(.bss.*) *(COMMON); } > RAM
-    .heap   (NOLOAD) :            { . = ALIGN(4); . += 0x8000; } > RAM
+    /* setting a minimum heap size maximises heap and reduces stack */
+    __dyn_heap_start    = ALIGN(4);
+    __dyn_heap_end      = ORIGIN(RAM) + LENGTH(RAM) - ALIGN(0x200,4);
+    __dyn_heap_size     =  __dyn_heap_end - __dyn_heap_start;
+    ASSERT(__dyn_heap_size >= 0x8000, "HEAP too small")
+    .heap   (NOLOAD) :    ALIGN(4)        { . = ALIGN(4); . += __dyn_heap_size; } > RAM
 
     /* End of memory to be retained */
     _eretain = . ;
@@ -180,9 +184,11 @@ SECTIONS
     _eheap  = ADDR(.heap)  + ALIGN(SIZEOF(.heap),  4);
     _lheap  = _eheap - _sheap;
 
-    /* using remaining RAM for stack */
-    _sstack = _eram;
+    /* stack size is a constant */
+    _sstack = _eheap;
+
     _estack = ORIGIN(RAM) + LENGTH(RAM);
+    _lstack = _estack - _sstack;
 
     /* check minimum stack size is still available */
     min_stack_size = 0x200;
