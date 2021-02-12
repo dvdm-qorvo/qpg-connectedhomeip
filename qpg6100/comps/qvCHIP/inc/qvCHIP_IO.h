@@ -20,13 +20,13 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 164742 $
- * $DateTime: 2021/01/25 11:31:30 $
+ * $Change: 166262 $
+ * $DateTime: 2021/02/12 16:26:03 $
  */
 
-/** @file "qvCHIP.h"
+/** @file "qvCHIP_IO.h"
  *
- *  CHIP wrapper API
+ *  CHIP wrapper IO API
  *
  *  Declarations of the IO specific public functions and enumerations of qvCHIP.
 */
@@ -56,7 +56,7 @@
 #define LED_WHITE 2
 
 /*! PWM color LED channels */
-#define PWM_CHANNEL_RED   (0) 
+#define PWM_CHANNEL_RED   (0)
 #define PWM_CHANNEL_GREEN (1)
 #define PWM_CHANNEL_BLUE  (2)
 
@@ -124,7 +124,7 @@ void qvCHIP_UartTxData(uint8_t length, const char* txBuffer);
 /** @brief Get received UART data
  *
  *  @param length          Max length of data to retrieve
- *  @param txBuffer        Pointer to a buffer to received the data in. 
+ *  @param txBuffer        Pointer to a buffer to received the data in.
  *                         It is assumed to be large enough to hold 'length' bytes
  *
  *  @return receivedLength Amount of bytes returned in the buffer.

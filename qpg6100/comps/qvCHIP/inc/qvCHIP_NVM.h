@@ -20,13 +20,13 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 159735 $
- * $DateTime: 2020/10/29 21:54:42 $
+ * $Change: 166262 $
+ * $DateTime: 2021/02/12 16:26:03 $
  */
 
-/** @file "qvCHIP.h"
+/** @file "qvCHIP_NVM.h"
  *
- *  CHIP wrapper API
+ *  CHIP wrapper NVM API
  *
  *  Declarations of the NVM specific public functions and enumerations of qvCHIP.
 */

@@ -40,7 +40,11 @@
 extern "C" {
 #endif
 
-#ifndef MBEDTLS_ECP_ALT // QORVO
+#ifndef MBEDTLS_ECP_ALT //QORVO
+#include <mbedtls/ecp.h>
+#endif // MBEDTLS_ECP_ALT // QORVO
+
+#ifndef MBEDTLS_ECP_ALT //QORVO
 /**
  * Domain parameters (curve, subgroup and generator) identifiers.
  *
@@ -144,7 +148,7 @@ typedef struct
 }
 mbedtls_ecp_group;
 
-#ifndef MBEDTLS_ECP_ALT // QORVO
+#ifndef MBEDTLS_ECP_ALT //QORVO
 /**
  * \brief           ECP key pair structure
  *
@@ -159,7 +163,7 @@ typedef struct
     mbedtls_ecp_point Q;        /*!<  our public value                  */
 }
 mbedtls_ecp_keypair;
-#endif // MBEDTLS_ECP_ALT // QORVO
+#endif // MBEDTLS_ECP_ALT //QORVO
 
 /**
  * \name SECTION: Module settings
@@ -187,6 +191,12 @@ mbedtls_ecp_keypair;
 #error "MBEDTLS_ECP_FIXED_POINT_OPTIM not applicable for HW accel"
 #endif /* MBEDTLS_ECP_FIXED_POINT_OPTIM */
 
+#if defined(MBEDTLS_ECP_RESTARTABLE)
+#error MBEDTLS_ECP_RESTARTABLE not supported!
+#else /* MBEDTLS_ECP_RESTARTABLE */
+typedef void mbedtls_ecp_restart_ctx;
+#endif /* MBEDTLS_ECP_RESTARTABLE */
+
 /* \} name SECTION: Module settings */
 
 /*
@@ -200,7 +210,7 @@ mbedtls_ecp_keypair;
  */
 #define MBEDTLS_ECP_TLS_NAMED_CURVE    3   /**< ECCurveType's named_curve */
 
-#ifndef MBEDTLS_ECP_ALT // QORVO
+#ifndef MBEDTLS_ECP_ALT //QORVO
 /**
  * \brief           Get the list of supported curves in order of preferrence
  *                  (full information)
@@ -622,7 +632,7 @@ int mbedtls_ecp_gen_key( mbedtls_ecp_group_id grp_id, mbedtls_ecp_keypair *key,
  *                  a MBEDTLS_ERR_ECP_XXX or MBEDTLS_ERR_MPI_XXX code.
  */
 int mbedtls_ecp_check_pub_priv( const mbedtls_ecp_keypair *pub, const mbedtls_ecp_keypair *prv );
-#endif // MBEDTLS_ECP_ALT // QORVO
+#endif // MBEDTLS_ECP_ALT //QORVO
 
 #if defined(MBEDTLS_SELF_TEST)
 

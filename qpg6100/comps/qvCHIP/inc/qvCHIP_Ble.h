@@ -20,13 +20,13 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 166108 $
- * $DateTime: 2021/02/11 09:09:08 $
+ * $Change: 166262 $
+ * $DateTime: 2021/02/12 16:26:03 $
  */
 
-/** @file "qvCHIP.h"
+/** @file "qvCHIP_Ble.h"
  *
- *  CHIP wrapper API
+ *  CHIP BLE wrapper API
  *
  *  Declarations of the BLE specific public functions and enumerations of qvCHIP.
 */

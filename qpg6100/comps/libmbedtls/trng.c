@@ -20,13 +20,12 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Header: //depot/main/Embedded/Applications/P236_CHIP/vlatest/comps/qvCHIP/src/qvCHIP.c#12 $
- * $Change: 160145 $
- * $DateTime: 2020/11/04 09:21:00 $
+ * $Change: 166265 $
+ * $DateTime: 2021/02/12 17:04:37 $
  */
 
 /** @file "trng.c"
- *  
+ *
  *  True random number generator for Qorvo chips
 */
 

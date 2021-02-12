@@ -30,15 +30,15 @@
 extern "C" {
 #endif
 
-#ifndef MBEDTLS_ECJPAKE_ALT // QORVO
+// #ifndef MBEDTLS_ECJPAKE_ALT // QORVO
 /**
  * Roles in the EC J-PAKE exchange
  */
-typedef enum {
-    MBEDTLS_ECJPAKE_CLIENT = 0,         /**< Client                         */
-    MBEDTLS_ECJPAKE_SERVER,             /**< Server                         */
-} mbedtls_ecjpake_role;
-#endif // MBEDTLS_ECJPAKE_ALT // QORVO
+// typedef enum {
+//     MBEDTLS_ECJPAKE_CLIENT = 0,         /**< Client                         */
+//     MBEDTLS_ECJPAKE_SERVER,             /**< Server                         */
+// } mbedtls_ecjpake_role;
+// #endif // MBEDTLS_ECJPAKE_ALT // QORVO
 
 #ifndef MBEDTLS_ECJPAKE_MAX_BYTES
 
