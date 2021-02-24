@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 164096 $
- * $DateTime: 2021/01/14 12:41:26 $
+ * $Change: 166991 $
+ * $DateTime: 2021/02/23 11:56:33 $
  */
 
 /** @file "qvCHIP.h"
@@ -92,6 +92,10 @@ void qvCHIP_Printf(uint8_t module, const char* formattedMsg);
 *   @param pOutput                   Buffer for the returned random sequence.
 */
 void qvCHIP_RandomGet(uint8_t outputLength, uint8_t *pOutput);
+
+/** @brief Trigger system reset.
+*/
+void qvCHIP_ResetSystem(void);
 
 #ifdef __cplusplus
 }
