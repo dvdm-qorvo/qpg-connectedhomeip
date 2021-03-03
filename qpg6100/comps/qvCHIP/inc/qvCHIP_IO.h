@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 166262 $
- * $DateTime: 2021/02/12 16:26:03 $
+ * $Change: 167451 $
+ * $DateTime: 2021/03/01 10:04:12 $
  */
 
 /** @file "qvCHIP_IO.h"
@@ -60,9 +60,12 @@
 #define PWM_CHANNEL_GREEN (1)
 #define PWM_CHANNEL_BLUE  (2)
 
-/*! Button indexes */
-#define BTN_LOCK     0
-#define BTN_FUNCTION 1
+/*! Button and switch (SW3) designations */
+#define BTN_SW1     (0)
+#define BTN_SW2     (1)
+#define BTN_SW3     (2)
+#define BTN_SW4     (3)
+#define BTN_SW5     (4)
 
 /*****************************************************************************
  *                    Functional Macro Definitions
