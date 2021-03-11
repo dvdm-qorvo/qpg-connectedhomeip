@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 166262 $
- * $DateTime: 2021/02/12 16:26:03 $
+ * $Change: 168044 $
+ * $DateTime: 2021/03/08 11:47:08 $
  */
 
 /** @file "qvCHIP_Ble.h"
@@ -215,12 +215,6 @@ typedef enum qvCHIP_Ble_AttMsg_ {
 /*****************************************************************************
  *                    Type Definitions
  *****************************************************************************/
-
-typedef enum qvStatus_ {
-    QV_STATUS_NO_ERROR = 0,
-    QV_STATUS_BUFFER_TOO_SMALL = 1,
-    QV_STATUS_INVALID_ARGUMENT = 2
-} qvStatus_t;
 
 typedef enum qvAdvLocation_ {
     QV_ADV_DATA_LOC_ADV = 0,

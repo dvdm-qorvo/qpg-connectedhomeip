@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 167064 $
- * $DateTime: 2021/02/24 09:02:43 $
+ * $Change: 168044 $
+ * $DateTime: 2021/03/08 11:47:08 $
  */
 
 /** @file "qvCHIP.h"
@@ -42,13 +42,22 @@
 #include <stdbool.h>
 #include <stddef.h>
 
-#include "qvCHIP_NVM.h"
-#include "qvCHIP_Ble.h"
-#include "qvCHIP_IO.h"
-
 /*****************************************************************************
  *                    Enum Definitions
  *****************************************************************************/
+
+/** @brief status return values */
+typedef enum qvStatus_ {
+    QV_STATUS_NO_ERROR = 0,
+    QV_STATUS_BUFFER_TOO_SMALL = 1,
+    QV_STATUS_INVALID_ARGUMENT = 2,
+    QV_STATUS_KEY_LEN_TOO_SMALL = 3,
+    QV_STATUS_INVALID_DATA = 4
+} qvStatus_t;
+
+#include "qvCHIP_NVM.h"
+#include "qvCHIP_Ble.h"
+#include "qvCHIP_IO.h"
 
 /*****************************************************************************
  *                    Macro Definitions

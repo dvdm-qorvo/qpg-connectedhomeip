@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 166262 $
- * $DateTime: 2021/02/12 16:26:03 $
+ * $Change: 168044 $
+ * $DateTime: 2021/03/08 11:47:08 $
  */
 
 /** @file "qvCHIP_NVM.h"
@@ -75,27 +75,35 @@ void qvCHIP_Nvm_Init(void);
 
 /** @brief Get maximum length of data identified by keyId
  *
- *  @param key NVM identifier to fetch maximum length for.
- *  @param maxLength Maximum length for given key.
+ *  @param key      NVM identifier to fetch maximum length for.
+ *  @param pKeyLen  return size of key
+ *  @return         QV_STATUS_NO_ERROR - no error
+ *                  QV_STATUS_INVALID_ARGUMENT - key not recognised
 */
-uint16_t qvCHIP_Nvm_GetMaxKeyLen(uint16_t key);
+qvStatus_t qvCHIP_Nvm_GetMaxKeyLen(uint16_t key, uint16_t* pKeyLen);
 
 /** @brief Backup data to NVM for a given key.
  *
  *  @param key             Identifier for NVM area to backup.
  *  @param pRamLocation    Pointer to data to backup.
  *  @param length          Length of data to backup. Cannot exceed maximum length for the key.
+ *  @return                QV_STATUS_NO_ERROR - No error
+ *                         QV_STATUS_INVALID_ARGUMENT - one of the arguments is not valid
+ *                         QV_STATUS_KEY_LEN_TOO_SMALL - the data is too large to backup to the key
 */
-void qvCHIP_Nvm_Backup(uint16_t key, uint8_t* pRamLocation, uint16_t length);
+qvStatus_t qvCHIP_Nvm_Backup(uint16_t key, uint8_t* pRamLocation, uint16_t length);
 
 /** @brief Restore data from NVM for a given key.
  *
  *  @param key            Identifier for NVM area to restore.
  *  @param pRamLocation   Pointer to the RAM location to restore data to.
  *  @param length         Length of data to restore. Cannot exceed maximum length for the key.
-                          If smaller then the maximum length a partial restore will be executed.
+ *                        If smaller than the maximum length a partial restore will be executed.
+ *  @return               QV_STATUS_NO_ERROR - no error
+ *                        QV_STATUS_INVALID_ARGUMENT - one of the arguments is not valid
+ *                        QV_STATUS_INVALID_DATA - the data retrieved is not valid
 */
-bool qvCHIP_Nvm_Restore(uint16_t key, uint8_t* pRamLocation, uint16_t* length);
+qvStatus_t qvCHIP_Nvm_Restore(uint16_t key, uint8_t* pRamLocation, uint16_t* length);
 
 /** @brief Remove data from NVM for a given key.
  *
