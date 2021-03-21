@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 168044 $
- * $DateTime: 2021/03/08 11:47:08 $
+ * $Change: 169169 $
+ * $DateTime: 2021/03/19 08:48:13 $
  */
 
 /** @file "qvCHIP_NVM.h"
@@ -91,7 +91,7 @@ qvStatus_t qvCHIP_Nvm_GetMaxKeyLen(uint16_t key, uint16_t* pKeyLen);
  *                         QV_STATUS_INVALID_ARGUMENT - one of the arguments is not valid
  *                         QV_STATUS_KEY_LEN_TOO_SMALL - the data is too large to backup to the key
 */
-qvStatus_t qvCHIP_Nvm_Backup(uint16_t key, uint8_t* pRamLocation, uint16_t length);
+qvStatus_t qvCHIP_Nvm_Backup(uint16_t key, const uint8_t* pRamLocation, uint16_t length);
 
 /** @brief Restore data from NVM for a given key.
  *
