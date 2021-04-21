@@ -1,11 +1,12 @@
 # QPGxxxx Connected Home over IP SDKs
 
 This repository contains the specific files needed to enable CHIP on Qorvo platforms.
+Source code in this repository is covered by the license agreement in [Qorvo_EULA.txt](Qorvo_EULA.txt).
 
 Example applications on the different platforms are available in the CHIP repository,
 which can be found under:
 
- > https://github.com/project-chip/connectedhomeip
+[https://github.com/project-chip/connectedhomeip](https://github.com/project-chip/connectedhomeip)
 
 ## Supported platforms
 
