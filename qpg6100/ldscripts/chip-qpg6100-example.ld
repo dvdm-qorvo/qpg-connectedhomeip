@@ -97,8 +97,8 @@ SECTIONS
     /* Check regions are allocated in lower ram */
     ASSERT(_elower_ram < eSYSRAM, "SYSRAM ram full")
 
-    .data : 
-    { 
+    .data :
+    {
         __data_start__ = .;
         *(vtable)
         . = ALIGN (4);
@@ -162,10 +162,10 @@ SECTIONS
         libgcc.a ( * )
     }
 
-    .gpNvm eFLASH - 0x4000:
+    .gpNvm eFLASH - 0x6000:
     {
         gpNvm_Start = . ;
-        . = 0x4000 ;
+        . = 0x6000 ;
         gpNvm_End = . ;
     } > FLASH
 
