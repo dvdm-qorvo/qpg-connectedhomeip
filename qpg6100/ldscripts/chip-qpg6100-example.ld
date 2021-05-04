@@ -162,10 +162,10 @@ SECTIONS
         libgcc.a ( * )
     }
 
-    .gpNvm eFLASH - 0x2000:
+    .gpNvm eFLASH - 0x4000:
     {
         gpNvm_Start = . ;
-        . = 0x2000 ;
+        . = 0x4000 ;
         gpNvm_End = . ;
     } > FLASH
 
