@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 168044 $
- * $DateTime: 2021/03/08 11:47:08 $
+ * $Change: 172177 $
+ * $DateTime: 2021/05/05 16:24:38 $
  */
 
 /** @file "qvCHIP_Ble.h"
@@ -387,6 +387,15 @@ extern "C" {
  *  @param callbacks       Structure containing various callbacks to call in the application
 */
 void qvCHIP_BleInit(qvCHIP_Ble_Callbacks_t* callbacks);
+
+/** @brief Sets the CHIPoBLE service and TX and RX characteristics UUIDs in human-readable order (MSB)
+ *
+ *  @param chipOBLE_UUID   Contains the service UUID to be used.
+ *  @param txChar_UUID     Contains the UUID for TX characteristic of CHIPoBLE service.
+ *  @param rxChar_UUID     Contains the UUID for RX characteristic of CHIPoBLE service.
+ *  @return                Returns NO_ERROR if the operation completed successfully.
+*/
+qvStatus_t qvCHIP_BleSetUUIDs(uint8_t* chipOBLE_UUID, uint8_t* txChar_UUID, uint8_t *rxChar_UUID);
 
 /** @brief Reads back the internally stored device name
  *
