@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 169993 $
- * $DateTime: 2021/03/31 10:02:33 $
+ * $Change: 170920 $
+ * $DateTime: 2021/04/14 21:38:08 $
  */
 
 /** @file "qvCHIP_KVS.h"
@@ -83,8 +83,8 @@ qvStatus_t qvCHIP_KvsPut(const char * key, const void * value, size_t valueSize)
  *
  *  @param key              Identifier for NVM area to restore.
  *  @param value            Pointer to the RAM location to restore data to.
- *  @param valueSize        Maximum length of data to restore. 
- *  @param readBytesSize    Actual length of data that was restored. Cannot exceed maximum length 
+ *  @param valueSize        Maximum length of data to restore.
+ *  @param readBytesSize    Actual length of data that was restored. Cannot exceed maximum length
                             for the key.
  *  @param offsetBytes      Offset into the memory area. Currently not implemented
  *  @return                 QV_STATUS_NO_ERROR - no error
