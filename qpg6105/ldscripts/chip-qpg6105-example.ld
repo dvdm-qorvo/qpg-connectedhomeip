@@ -1,19 +1,19 @@
 /*
- * (c) 2019-2020, Qorvo
+ * (c) 2020, Qorvo
  */
 
 /* Memory Spaces Definitions */
 MEMORY
 {
-    /* Last 32 bytes of UCRAM in use by ROM bootloader stack. */
-    RAM  (rxw) : ORIGIN = 0x20038000, LENGTH = 0x20000
-    FLASH (rx) : ORIGIN = 0x4000000, LENGTH = 0x80000
-    ROM   (rx) : ORIGIN = 0x04800000, LENGTH = 0x8000
+    RAM  (rxw)      : ORIGIN = 0x20038000, LENGTH = 0x20000
+    FLASH (rx)      : ORIGIN = 0x4000000, LENGTH = 0x90000
+    FLASH_VIRT (rx) : ORIGIN = 0x04400000, LENGTH = 0x100000
+    ROM   (rx)      : ORIGIN = 0x04800000, LENGTH = 0x8000
 }
 
 SECTIONS
 {
-    eFLASH = 0x4080000;
+    eFLASH = 0x4090000;
 
     sSYSRAM = 0x20038000;
     eSYSRAM = 0x20040000;
@@ -30,6 +30,7 @@ SECTIONS
      * allow injection of custom values by programmer tool.
      */
     .native_user_license   0x4000000 + 0x10 : { KEEP(*(.native_user_license)); } > FLASH
+
     .isr_vector : ALIGN(0x100) { KEEP(*(.isr_vector)); } > FLASH
 
     .text :
@@ -159,10 +160,10 @@ SECTIONS
         libgcc.a ( * )
     }
 
-    .gpNvm eFLASH - 0x6000:
+    .gpNvm eFLASH - 0x4000:
     {
         gpNvm_Start = . ;
-        . = 0x6000 ;
+        . = 0x4000 ;
         gpNvm_End = . ;
     } > FLASH
 
