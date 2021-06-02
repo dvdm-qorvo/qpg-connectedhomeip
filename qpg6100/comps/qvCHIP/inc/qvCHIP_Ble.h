@@ -445,6 +445,15 @@ void qvCHIP_BleWriteAttr(uint16_t conId, uint16_t handle, uint16_t length, uint8
 */
 void qvCHIP_BleSendIndication(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
 
+/** @brief Sends a notification with the specified parameters
+ *
+ *  @param conId           ID of the connection to use to send data.
+ *  @param handle          Handle in the GATT server for the characteristic on which to send the data.
+ *  @param length          Length of the data.
+ *  @param data            Pointer to the data to send.
+*/
+void qvCHIP_BleSendNotification(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+
 /** @brief Sets minimum and maximum intervals for advertising packets
  *
  *  @param intervalMin     Minimum interval between advertisement packets.
