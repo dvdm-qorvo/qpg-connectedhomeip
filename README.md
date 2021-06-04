@@ -19,7 +19,7 @@ All files required are stored in this repository under
 ./qpg6100
 ```
 
-![QPG6100 DK board](qpg6100/doc/QPG6100_DK_Board.jpg)
+![QPG6100 DK board](qpg6100/doc/qpg6100.png)
 
 * QPG7015M
 

@@ -4,7 +4,7 @@
 * [Overview](#overview)
 * [Required hardware](#required-hardware)
 	* [Computer and QPG6100 DK board setup](#computer-and-qpg6100-dk-board-setup)
-	* [Install the Android™ CHIPTool application](#install-the-android™-chiptool-application)
+	* [Install the Android™ CHIPTool application](#install-the-android-chiptool-application)
 * [QPG7015M Border Router setup](#qpg7015m-border-router-setup)
 	* [Connect Android mobile device to the Wi-Fi access point](#connect-android-mobile-device-to-the-wi-fi-access-point)
 	* [Form a new Thread network](#form-a-new-thread-network)
@@ -148,7 +148,9 @@ Open a web browser and navigate to the URL by pasting it in the address bar.  Th
 
 ### Scan the QR code
 
-In CHIPTool, tap “Provision CHIP device with Thread” and scan the QR code displayed in your web browser..
+In CHIPTool, tap “Provision CHIP device with Thread” and scan the QR code displayed in your web browser.
+
+If the device does not connect, press the reset button again on the QPG6100DK board.
 
 The network should appear, click "save network".
 
