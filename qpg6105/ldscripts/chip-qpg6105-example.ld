@@ -32,13 +32,12 @@ SECTIONS
     .native_user_license   0x4000000 + 0x10 : { KEEP(*(.native_user_license)); } > FLASH
 
 
-    /* Reserve space for RT system in FLASH */
-    rt_system_start_offset = 0x400;
-    rt_system_start_address = ORIGIN(FLASH) + rt_system_start_offset;
-    .rt_flash    rt_system_start_address : {. = ALIGN(4); *(.rt_flash);    } > FLASH
-    ASSERT((rt_system_start_offset % 0x80 == 0), "RT system start should be aligned on 128 bytes")
-    ASSERT((rt_system_start_address / 0x20000 == . / 0x20000 ), "RT system shall not cross 128kb boundary")
-
+    /* Add the jumptable at this fixed location */
+    jumptable_start_offset = 0x800;
+    datajumptable_start_address  = ORIGIN(FLASH) + jumptable_start_offset;
+    flashjumptable_start_address = datajumptable_start_address + 0x40;
+    .datajumptable   datajumptable_start_address  :  {. = ALIGN(4); KEEP(*(.datajumptable));    } > FLASH
+    .flashjumptable  flashjumptable_start_address :  {. = ALIGN(4); KEEP(*(.flashjumptable));   } > FLASH
     .isr_vector : ALIGN(0x100) { KEEP(*(.isr_vector)); } > FLASH
 
     .text :
@@ -143,7 +142,7 @@ SECTIONS
     __dyn_heap_start    = ALIGN(4);
     __dyn_heap_end      = ORIGIN(RAM) + LENGTH(RAM) - ALIGN(0x200,4);
     __dyn_heap_size     =  __dyn_heap_end - __dyn_heap_start;
-    ASSERT(__dyn_heap_size >= 0x8000, "HEAP too small")
+    ASSERT(__dyn_heap_size >= 0x9400, "HEAP too small")
     .heap   (NOLOAD) :    ALIGN(4)        { . = ALIGN(4); . += __dyn_heap_size; } > RAM
 
     /* End of memory to be retained */
