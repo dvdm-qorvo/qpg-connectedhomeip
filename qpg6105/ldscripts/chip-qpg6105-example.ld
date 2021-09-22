@@ -1,5 +1,5 @@
 /*
- * (c) 2020, Qorvo
+ * Copyright (c) 2017, 2021, Qorvo Inc
  */
 
 /* Memory Spaces Definitions */
@@ -8,7 +8,7 @@ MEMORY
     RAM  (rxw)      : ORIGIN = 0x20038000, LENGTH = 0x20000
     FLASH (rx)      : ORIGIN = 0x4000000, LENGTH = 0x90000
     FLASH_VIRT (rx) : ORIGIN = 0x04400000, LENGTH = 0x100000
-    ROM   (rx)      : ORIGIN = 0x04800000, LENGTH = 0x8000
+    ROM   (rx)      : ORIGIN = 0x04800000, LENGTH = 0x40000
 }
 
 SECTIONS
@@ -39,6 +39,7 @@ SECTIONS
     .datajumptable   datajumptable_start_address  :  {. = ALIGN(4); KEEP(*(.datajumptable));    } > FLASH
     .flashjumptable  flashjumptable_start_address :  {. = ALIGN(4); KEEP(*(.flashjumptable));   } > FLASH
     .isr_vector : ALIGN(0x100) { KEEP(*(.isr_vector)); } > FLASH
+
 
     .text :
     {
@@ -77,7 +78,6 @@ SECTIONS
         *(.ARM.exidx* .gnu.linkonce.armexidx.*)
     } > FLASH
     __exidx_end = .;
-    .rom :    { . = ALIGN(4); *(.rom)   *(.rom.*);    } > ROM
 
     /* Start of memory to be retained in sleep */
     _sretain = 0x20038000;
@@ -102,6 +102,7 @@ SECTIONS
     /* Check regions are allocated in lower ram */
     ASSERT(_elower_ram < eSYSRAM, "SYSRAM ram full")
 
+
     .data :
     {
         __data_start__ = .;
@@ -115,29 +116,30 @@ SECTIONS
         . = ALIGN(4);
         /* preinit data */
         PROVIDE_HIDDEN (__preinit_array_start = .);
-        KEEP(*(.preinit_array))
+        KEEP(*(.preinit_array));
         PROVIDE_HIDDEN (__preinit_array_end = .);
 
         . = ALIGN(4);
         /* init data */
         PROVIDE_HIDDEN (__init_array_start = .);
-        KEEP(*(SORT(.init_array.*)))
-        KEEP(*(.init_array))
+        KEEP(*(SORT(.init_array.*)));
+        KEEP(*(.init_array));
         PROVIDE_HIDDEN (__init_array_end = .);
 
         . = ALIGN(4);
         /* finit data */
         PROVIDE_HIDDEN (__fini_array_start = .);
-        KEEP(*(SORT(.fini_array.*)))
-        KEEP(*(.fini_array))
+        KEEP(*(SORT(.fini_array.*)));
+        KEEP(*(.fini_array));
         PROVIDE_HIDDEN (__fini_array_end = .);
 
-        KEEP(*(.jcr*))
+        KEEP(*(.jcr*));
         . = ALIGN(4);
         /* All data end */
         __data_end__ = .;
     } > RAM AT > FLASH
     .bss :  { . = ALIGN(4); *(.bss)  *(.bss.*) *(COMMON); } > RAM
+
     /* setting a minimum heap size maximises heap and reduces stack */
     __dyn_heap_start    = ALIGN(4);
     __dyn_heap_end      = ORIGIN(RAM) + LENGTH(RAM) - ALIGN(0x200,4);
