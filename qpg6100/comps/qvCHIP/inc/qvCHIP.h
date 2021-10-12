@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 182752 $
- * $DateTime: 2021/10/05 14:12:53 $
+ * $Change: 183193 $
+ * $DateTime: 2021/10/12 11:37:39 $
  */
 
 /** @file "qvCHIP.h"
@@ -105,6 +105,13 @@ void qvCHIP_Printf(uint8_t module, const char* formattedMsg);
 *   @param pOutput                   Buffer for the returned random sequence.
 */
 void qvCHIP_RandomGet(uint8_t outputLength, uint8_t *pOutput);
+
+/** @brief Return a sequence of random bytes using HW entropy source.
+*
+*   @param outputLength              Length of the sequence to be obtained.
+*   @param pOutput                   Buffer for the returned random sequence.
+*/
+void qvCHIP_RandomGetDRBG(uint8_t outputLength, uint8_t *pOutput);
 
 /** @brief Trigger system reset.
 */

@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 166265 $
- * $DateTime: 2021/02/12 17:04:37 $
+ * $Change: 183193 $
+ * $DateTime: 2021/10/12 11:37:39 $
  */
 
 /** @file "trng.c"
@@ -48,7 +48,7 @@ int mbedtls_hardware_poll( void *data,
     int ret = 0;
     (void) data;
 
-    qvCHIP_RandomGet(len, output);
+    qvCHIP_RandomGetDRBG(len, output);
     *olen = len;
 
     return ret;
