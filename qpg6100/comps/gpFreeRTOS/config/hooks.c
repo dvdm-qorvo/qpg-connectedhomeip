@@ -58,8 +58,6 @@
 #include "task.h"
 #include "semphr.h"
 
-#define GP_COMPONENT_ID GP_COMPONENT_ID_FREERTOS
-
 #if (configUSE_MALLOC_FAILED_HOOK == 1)
 /*-----------------------------------------------------------*/
 
@@ -76,6 +74,7 @@ void vApplicationMallocFailedHook( void )
     to query the size of free heap space that remains (although it does not
     provide information on how the remaining heap might be fragmented). */
     taskDISABLE_INTERRUPTS();
+    for( ;; );
 }
 #endif
 
@@ -150,6 +149,7 @@ void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
     configCHECK_FOR_STACK_OVERFLOW is defined to 1 or 2.  This hook
     function is called if a stack overflow is detected. */
     taskDISABLE_INTERRUPTS();
+    for( ;; );
 }
 #endif
 
