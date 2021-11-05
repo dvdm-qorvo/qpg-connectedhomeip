@@ -88,15 +88,15 @@ SECTIONS
     .ret_hw 0x20038008 : { . += 0x1B4; } > RAM /* 0x20038008+0x1b4 = 0x200381BC = GP_MM_RAM_RETENTION_END */
     .ret_sw 0x200381BC : { . += 0x7C; }  > RAM
     ASSERT(. >= 0x200381c0, "gpmicro areas must fall into retention areas")
-    .unused_area 0x20038238 : { . += 0x148; } > RAM
 
     /* Windowed sections */
     /* ram_regmap, events, pbm options and pbm data are taken from buffers in .lower_ram_retain */
-
-    .lower_ram_retain_gpmicro_accessible (NOLOAD) :  { . = ALIGN(4); *(.lower_ram_retain_gpmicro_accessible) *(.lower_ram_retain_gpmicro_accessible.*); } > RAM
+    .lower_ram_retain_gpmicro_accessible (NOLOAD) :  {
+        . = ALIGN(4);
+        *(.lower_ram_retain_gpmicro_accessible) *(.lower_ram_retain_gpmicro_accessible.*);
+    } > RAM
     ASSERT (. < 0x20038000+0x4000, ".lower_ram_retain_gpmicro_accessible area outside range")
     .lower_ram_retain (NOLOAD) : { . = ALIGN(4); *(.lower_ram_retain) *(.lower_ram_retain.*); } > RAM
-
     _elower_ram = . ;
 
     /* Check regions are allocated in lower ram */
@@ -144,7 +144,7 @@ SECTIONS
     __dyn_heap_start    = ALIGN(4);
     __dyn_heap_end      = ORIGIN(RAM) + LENGTH(RAM) - ALIGN(0x200,4);
     __dyn_heap_size     =  __dyn_heap_end - __dyn_heap_start;
-    ASSERT(__dyn_heap_size >= 0x8000, "HEAP too small")
+    ASSERT(__dyn_heap_size >= 0x2000, "HEAP too small")
     .heap   (NOLOAD) :    ALIGN(4)        { . = ALIGN(4); . += __dyn_heap_size; } > RAM
 
     /* End of memory to be retained */

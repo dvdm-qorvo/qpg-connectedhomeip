@@ -52,15 +52,21 @@
 #define configTICK_RATE_HZ              ((TickType_t)1000)
 #define configMAX_PRIORITIES            (8)
 #define configMINIMAL_STACK_SIZE        ((unsigned short)128)
+
+#define configSUPPORT_DYNAMIC_ALLOCATION (0)
+#define configSUPPORT_STATIC_ALLOCATION  (1)
+
 #define configTOTAL_HEAP_SIZE           0 /* FreeRTOS heap functions mapped to malloc/free (heap_3.c) */
+
 #define configMAX_TASK_NAME_LEN         (16)
 #define configUSE_TRACE_FACILITY        0
+#define configUSE_STATS_FORMATTING_FUNCTIONS 0
 #define configUSE_16_BIT_TICKS          0
 #define configIDLE_SHOULD_YIELD         1
 #define configUSE_MUTEXES               1
 #define configUSE_QUEUE_SETS            0
 #define configQUEUE_REGISTRY_SIZE       8
-#define configCHECK_FOR_STACK_OVERFLOW  0
+#define configCHECK_FOR_STACK_OVERFLOW  2
 #define configUSE_RECURSIVE_MUTEXES     1
 #define configUSE_MALLOC_FAILED_HOOK    1
 #define configUSE_APPLICATION_TASK_TAG  0
@@ -68,8 +74,6 @@
 #define configGENERATE_RUN_TIME_STATS   0
 #define configUSE_TIME_SLICING          0
 
-#define configSUPPORT_DYNAMIC_ALLOCATION (1)
-#define configSUPPORT_STATIC_ALLOCATION  (0)
 
 /* Co-routine definitions. */
 #define configUSE_CO_ROUTINES         0
@@ -92,6 +96,7 @@
 #define INCLUDE_xTaskGetSchedulerState          1
 #define INCLUDE_xTaskGetCurrentTaskHandle       0
 #define INCLUDE_uxTaskGetStackHighWaterMark     0
+
 #define INCLUDE_xTaskGetIdleTaskHandle          0
 #define INCLUDE_eTaskGetState                   1
 #define INCLUDE_xEventGroupSetBitFromISR        1
@@ -134,4 +139,3 @@ standard names. */
 #define xPortSysTickHandler systick_handler_impl
 
 #endif /* FREERTOS_CONFIG_H */
-

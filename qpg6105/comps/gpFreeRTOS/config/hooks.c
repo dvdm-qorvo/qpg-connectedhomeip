@@ -136,7 +136,7 @@ __weak void vApplicationIdleHook(void)
 #endif
 
 /*-----------------------------------------------------------*/
-#if (configCHECK_FOR_STACK_OVERFLOW == 1)
+#if (configCHECK_FOR_STACK_OVERFLOW > 0)
 void vApplicationStackOverflowHook( TaskHandle_t pxTask, char *pcTaskName )
 {
     ( void ) pcTaskName;
