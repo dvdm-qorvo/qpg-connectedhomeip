@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 185837 $
- * $DateTime: 2021/11/23 14:46:36 $
+ * $Change: 186481 $
+ * $DateTime: 2021/12/01 14:43:04 $
  */
 
 /** @file "qvCHIP.h"
@@ -54,7 +54,8 @@ typedef enum qvStatus_ {
     QV_STATUS_KEY_LEN_TOO_SMALL = 3,
     QV_STATUS_INVALID_DATA = 4,
     QV_STATUS_NOT_IMPLEMENTED = 5,
-    QV_STATUS_NVM_ERROR = 6
+    QV_STATUS_NVM_ERROR = 6,
+    QV_STATUS_WRONG_STATE = 7
 } qvStatus_t;
 
 #include "qvCHIP_NVM.h"

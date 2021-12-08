@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 183497 $
- * $DateTime: 2021/10/15 15:12:10 $
+ * $Change: 186338 $
+ * $DateTime: 2021/11/30 12:03:39 $
  */
 
 /** @file "trng.c"

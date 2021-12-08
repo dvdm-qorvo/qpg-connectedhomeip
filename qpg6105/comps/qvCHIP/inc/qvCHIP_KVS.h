@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 170920 $
- * $DateTime: 2021/04/14 21:38:08 $
+ * $Change: 186475 $
+ * $DateTime: 2021/12/01 14:14:42 $
  */
 
 /** @file "qvCHIP_KVS.h"
@@ -67,6 +67,11 @@ extern "C" {
 /*****************************************************************************
  *                    NVM API
  *****************************************************************************/
+ /** @brief Initialization of NVM size and setting parameters.
+ *  Added to work with fixed NVM library.
+ *  @return QV_STATUS_NO_ERROR - No error
+*/
+qvStatus_t qvCHIP_KvsInit(void);
 
 /** @brief Store data to NVM for a given key.
  *

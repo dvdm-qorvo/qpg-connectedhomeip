@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 174215 $
- * $DateTime: 2021/06/03 10:13:53 $
+ * $Change: 186481 $
+ * $DateTime: 2021/12/01 14:43:04 $
  */
 
 /** @file "qvCHIP_Ble.h"
@@ -385,8 +385,9 @@ extern "C" {
 /** @brief Initialization function for BLE functionality
  *
  *  @param callbacks       Structure containing various callbacks to call in the application
+ *  @return                Returns NO_ERROR if the operation completed successfully.
 */
-void qvCHIP_BleInit(qvCHIP_Ble_Callbacks_t* callbacks);
+qvStatus_t qvCHIP_BleInit(qvCHIP_Ble_Callbacks_t* callbacks);
 
 /** @brief Sets the CHIPoBLE service and TX and RX characteristics UUIDs in human-readable order (MSB)
  *
@@ -433,8 +434,9 @@ qvStatus_t qvCHIP_BleGetMTU(uint16_t conId, uint16_t * pMTUSize);
  *  @param handle          Handle in the GATT server for the characteristic on which to send the data.
  *  @param length          Length of the data.
  *  @param data            Pointer to the data to send.
+ *  @return                INVALID_ARGUMENT if data is NULL, otherwise NO_ERROR
 */
-void qvCHIP_BleWriteAttr(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+qvStatus_t qvCHIP_BleWriteAttr(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
 
 /** @brief Sends an indication with the specified parameters
  *
@@ -442,8 +444,9 @@ void qvCHIP_BleWriteAttr(uint16_t conId, uint16_t handle, uint16_t length, uint8
  *  @param handle          Handle in the GATT server for the characteristic on which to send the data.
  *  @param length          Length of the data.
  *  @param data            Pointer to the data to send.
+ *  @return                INVALID_ARGUMENT if conId or data is not valid, otherwise NO_ERROR
 */
-void qvCHIP_BleSendIndication(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+qvStatus_t qvCHIP_BleSendIndication(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
 
 /** @brief Sends a notification with the specified parameters
  *
@@ -451,23 +454,26 @@ void qvCHIP_BleSendIndication(uint16_t conId, uint16_t handle, uint16_t length, 
  *  @param handle          Handle in the GATT server for the characteristic on which to send the data.
  *  @param length          Length of the data.
  *  @param data            Pointer to the data to send.
+ *  @return                INVALID_ARGUMENT if conId or data is not valid, otherwise NO_ERROR
 */
-void qvCHIP_BleSendNotification(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
+qvStatus_t qvCHIP_BleSendNotification(uint16_t conId, uint16_t handle, uint16_t length, uint8_t* data);
 
 /** @brief Sets minimum and maximum intervals for advertising packets
  *
  *  @param intervalMin     Minimum interval between advertisement packets.
  *  @param intervalMax     Maximum interval between advertisement packets.
+ *  @return                Returns NO_ERROR if the operation completed successfully
 */
-void qvCHIP_BleSetAdvInterval(uint16_t intervalMin, uint16_t intervalMax);
+qvStatus_t qvCHIP_BleSetAdvInterval(uint16_t intervalMin, uint16_t intervalMax);
 
 /** @brief Set advertising data to be used
  *
  *  @param location        Type of advertising data that is being set (advertising or scan response).
  *  @param len             Length of the data.
  *  @param pData           Pointer to the advertising data.
+ *  @return                Returns NO_ERROR if the operation completed successfully
 */
-void qvCHIP_BleSetAdvData(qvAdvLocation_t location, uint8_t len, uint8_t *pData);
+qvStatus_t qvCHIP_BleSetAdvData(qvAdvLocation_t location, uint8_t len, uint8_t *pData);
 
 /** @brief Start BLE advertising using the default parameters
  *

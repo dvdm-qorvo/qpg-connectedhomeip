@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 182115 $
- * $DateTime: 2021/09/23 15:19:11 $
+ * $Change: 186475 $
+ * $DateTime: 2021/12/01 14:14:42 $
  */
 
 /** @file "qvCHIP_OTA.h"
@@ -62,6 +62,7 @@
 #define qvCHIP_OtaStatusParseFailed                            0x0B
 #define qvCHIP_OtaStatusInvalidImage                           0x0C
 #define qvCHIP_OtaStatusPreCheckFailed                         0x0D
+#define qvCHIP_OtaStatusInvalidParam                            0x0E
 /** @typedef qvCHIP_OtaStatus_t
     @brief General return status for all functions of this API
 
@@ -79,6 +80,7 @@
     @li @c qvCHIP_OtaStatusParseFailed           Failure in parsing the image.
     @li @c qvCHIP_OtaStatusInvalidImage          Invalid image.
     @li @c qvCHIP_OtaStatusPreCheckFaild         Upgrade image pre-wipe check failed.
+    @li @c qvCHIP_OtaStatusInvalidParam           Pointer passed as an argument is NULL.
 */
 typedef uint8_t                             qvCHIP_OtaStatus_t;
 //@}

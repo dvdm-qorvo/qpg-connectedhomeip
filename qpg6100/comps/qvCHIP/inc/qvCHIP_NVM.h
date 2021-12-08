@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 182513 $
- * $DateTime: 2021/09/30 22:08:35 $
+ * $Change: 186475 $
+ * $DateTime: 2021/12/01 14:14:42 $
  */
 
 /** @file "qvCHIP_NVM.h"
@@ -68,11 +68,6 @@ extern "C" {
 /*****************************************************************************
  *                    NVM API
  *****************************************************************************/
-
-/** @brief Initialization of NVM memory used for CHIP
-*/
-void qvCHIP_Nvm_Init(void);
-
 /** @brief Backup data to NVM for a given key.
  *
  *  @param key             Identifier for NVM area to backup.
