@@ -10,16 +10,16 @@ which can be found under:
 
 ## Supported platforms
 
-* QPG6100
+* QPG6105
 
-CHIP examples are available for the QPG6100 Development Kit board.
+CHIP examples are available for the QPG6105 Development Kit board.
 All files required are stored in this repository under
 
 ```
-./qpg6100
+./qpg6105
 ```
 
-![QPG6100 DK board](qpg6100/doc/qpg6100.png)
+![QPG6105 DK board](qpg6105/doc/qpg6105.png)
 
 * QPG7015M
 
