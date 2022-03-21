@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 185837 $
- * $DateTime: 2021/11/23 14:46:36 $
+ * $Change$
+ * $DateTime$
  */
 
 /** @file "qvIO_IO.h"

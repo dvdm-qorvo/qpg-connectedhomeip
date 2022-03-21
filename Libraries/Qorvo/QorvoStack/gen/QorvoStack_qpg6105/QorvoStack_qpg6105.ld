@@ -3,8 +3,8 @@
  */
 /* Generated for A25L080 SPIFLASH */
 
-upgrade_image_user_license_start__    = 0x4403800;
-upgrade_image_user_license_end__      = 0x44038ff;
+upgrade_image_user_license_start__    = 0x4003800;
+upgrade_image_user_license_end__      = 0x40038ff;
 /* Location of the application entry point */
 /* flash_start_abs 0x4000000 application_offset 0x4800 */
 __app_Start__                             =  0x4004800 ;
@@ -172,17 +172,27 @@ SECTIONS
         libgcc.a ( * )
     }
 
+    .JTOTA eFLASH - 0x65000:
+    {
+        JTOTA_Start = . ;
+        KEEP(*(JTOTA.data));
+        .  = JTOTA_Start + 0x1000;
+        JTOTA_End = . ;
+    } > FLASH
+
     .gpNvm eFLASH - 0x4000:
     {
         gpNvm_Start = . ;
-        . = 0x4000 ;
+        KEEP(*(gpNvm.data));
+        .  = gpNvm_Start + 0x4000;
         gpNvm_End = . ;
     } > FLASH
 
     .OTA eFLASH - 0x64000:
     {
         OTA_Start = . ;
-        . = 0x60000 ;
+        KEEP(*(OTA.data));
+        .  = OTA_Start + 0x60000;
         OTA_End = . ;
     } > FLASH
 

@@ -20,8 +20,8 @@
  * INCIDENTAL OR CONSEQUENTIAL DAMAGES,
  * FOR ANY REASON WHATSOEVER.
  *
- * $Change: 188044 $
- * $DateTime: 2021/12/28 15:53:50 $
+ * $Change$
+ * $DateTime$
  */
 
 /** @file "qvCHIP_Ble.h"
