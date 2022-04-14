@@ -136,7 +136,7 @@ def create_ota_payload(input_path: str):
     run_script(f"{HEX2BIN_PATH} {intermediate_crc_added} {intermediate_crc_added_binary}")
     run_script(f"{COMPRESSFIRMWARE_PATH} --add_crc"
                f" --input {intermediate_crc_added_binary}"
-               " --license_offset 0x47f0 --ota_offset 0x9c000"
+               " --license_offset 0x47f0 --ota_offset 0xa0000"
                f" --output {intermediate_compressed_binary_path} --page_size 0x200 --sector_size 0x400"
                )
     return intermediate_compressed_binary_path
